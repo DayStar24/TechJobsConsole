@@ -119,13 +119,29 @@ namespace TechJobsConsole
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
+            //Console.BackgroundColor = ConsoleColor.DarkGray;
+            //Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("{0,-45}{1,-45}{2,-45}{3,-45}{4,-45}","JOB","COMPANY","LOCATION","DESCRIPTION","SKILL");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(
+                "=============================================================================================================" +
+                "============================================================================================================="
+            );
+
             foreach (Dictionary<string, string> jobs in someJobs)
             {
-                Console.WriteLine();
-
+                Console.ForegroundColor = ConsoleColor.Green;
+                
                 foreach (KeyValuePair<string, string> job in jobs)
-                    Console.WriteLine(job.Value);
+                {
+                    Console.Write("{0,-45}", job.Value);
+                }
+                
+                Console.WriteLine();
             }
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
