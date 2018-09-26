@@ -66,7 +66,10 @@ namespace TechJobsConsole
                                 Console.WriteLine();
                             }
                         }
-                        
+
+                        Console.WriteLine();
+                        Console.BackgroundColor = ConsoleColor.Green;
+                        if (results.Count != 0) Console.Write("{0} DISPLAYED", results.Count);
                         Console.ResetColor();
                         Console.WriteLine();
                     }
@@ -164,7 +167,7 @@ namespace TechJobsConsole
             int count = 0;
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
-
+            
             foreach (Dictionary<string, string> jobs in someJobs)
             {   
                 foreach (KeyValuePair<string, string> job in jobs)
@@ -185,6 +188,10 @@ namespace TechJobsConsole
                 Console.WriteLine();
             }
 
+            Console.WriteLine();
+            Console.BackgroundColor = ConsoleColor.Green;
+            if (someJobs.Count != 0) Console.Write("{0} DISPLAYED", someJobs.Count);
+            Console.WriteLine();
             Console.ResetColor();
         }
     }
