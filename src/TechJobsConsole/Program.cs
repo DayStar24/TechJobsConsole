@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace TechJobsConsole
 {
@@ -179,7 +180,23 @@ namespace TechJobsConsole
             int count = 0;
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
-            
+//////
+            async Task ForEachAsync<T>(this IEnumerable<T> source, Func<T, Task> body) 
+            { 
+                List<Exception> exceptions = null; 
+                foreach(var item in source) 
+                {  
+                    try { await body(item); } 
+                    catch(Exception exc) 
+                    {        
+                        if (exceptions == null) exceptions = new List<Exception>(); 
+                        exceptions.Add(exc); 
+                    } 
+                } 
+                if (exceptions != null)   
+                throw new AggregateException(exceptions); 
+            }
+//////            
             foreach (Dictionary<string, string> jobs in someJobs)
             {   
                 foreach (KeyValuePair<string, string> job in jobs)
