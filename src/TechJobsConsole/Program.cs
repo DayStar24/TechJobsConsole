@@ -41,14 +41,20 @@ namespace TechJobsConsole
                     else
                     {
                         List<string> results = JobData.FindAll(columnChoice);
-
+                        int count = 0;
                         Console.WriteLine("\n*** All " + columnChoices[columnChoice] + " Values ***");
                         Console.ForegroundColor = ConsoleColor.Green;
+                        
                         foreach (string item in results)
                         {
-                            Console.WriteLine(item);
+                            Console.Write("{0,-45}", item);
+                            count++;
+
+                            if (count % 5 == 0) Console.WriteLine();
                         }
+                        
                         Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine();
                     }
                 }
                 else // choice is "search"
