@@ -43,10 +43,12 @@ namespace TechJobsConsole
                         List<string> results = JobData.FindAll(columnChoice);
 
                         Console.WriteLine("\n*** All " + columnChoices[columnChoice] + " Values ***");
+                        Console.ForegroundColor = ConsoleColor.Green;
                         foreach (string item in results)
                         {
                             Console.WriteLine(item);
                         }
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                 }
                 else // choice is "search"
