@@ -41,19 +41,33 @@ namespace TechJobsConsole
                     else
                     {
                         List<string> results = JobData.FindAll(columnChoice);
+                        
                         int count = 0;
+                        
+                        Console.BackgroundColor = ConsoleColor.Blue;
                         Console.WriteLine("\n*** All " + columnChoices[columnChoice] + " Values ***");
-                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine();
+                        Console.BackgroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
                         
                         foreach (string item in results)
                         {
                             Console.Write("{0,-45}", item);
                             count++;
 
-                            if (count % 5 == 0) Console.WriteLine();
+                            if (count % 5 == 0)
+                            {
+                                if (Console.BackgroundColor == ConsoleColor.White)
+                                
+                                    Console.BackgroundColor = ConsoleColor.Gray;
+                                else
+                                    Console.BackgroundColor = ConsoleColor.White;
+
+                                Console.WriteLine();
+                            }
                         }
                         
-                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ResetColor();
                         Console.WriteLine();
                     }
                 }
@@ -127,13 +141,15 @@ namespace TechJobsConsole
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
             Console.WriteLine(
                 "{0,-45}{1,-45}{2,-45}{3,-45}{4,-45}",
                 "POSITION","COMPANY","LOCATION","DESCRIPTION","SKILLS"
             );
 
-            Console.ForegroundColor = ConsoleColor.Blue;
+            /*Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(
                 "{0,-45}{1,-45}{2,-45}{3,-45}{4,-45}", 
                 "=========================================",
@@ -141,21 +157,35 @@ namespace TechJobsConsole
                 "=========================================",
                 "=========================================",
                 "========================================="
-            );
+            );*/
 
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine();
+
+            int count = 0;
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
 
             foreach (Dictionary<string, string> jobs in someJobs)
             {   
                 foreach (KeyValuePair<string, string> job in jobs)
                 {
                     Console.Write("{0,-45}", job.Value);
+                    count++;
+
+                    if (count % 5 == 0)
+                    {
+                        if (Console.BackgroundColor == ConsoleColor.White)
+                                
+                            Console.BackgroundColor = ConsoleColor.Gray;
+                        else
+                            Console.BackgroundColor = ConsoleColor.White;
+                    }
                 }
                 
                 Console.WriteLine();
             }
 
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ResetColor();
         }
     }
 }
