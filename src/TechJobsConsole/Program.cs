@@ -67,9 +67,21 @@ namespace TechJobsConsole
                             }
                         }
 
-                        Console.WriteLine();
-                        Console.BackgroundColor = ConsoleColor.Green;
-                        if (results.Count != 0) Console.Write("{0} DISPLAYED", results.Count);
+                        if (results.Count != 0) 
+                        {
+                            Console.WriteLine();
+                            Console.BackgroundColor = ConsoleColor.DarkGreen;
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("{0} DISPLAYED", results.Count);
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.BackgroundColor = ConsoleColor.DarkRed;
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("NO RESULTS");
+                        }
+
                         Console.ResetColor();
                         Console.WriteLine();
                     }
@@ -188,9 +200,21 @@ namespace TechJobsConsole
                 Console.WriteLine();
             }
 
-            Console.WriteLine();
-            Console.BackgroundColor = ConsoleColor.Green;
-            if (someJobs.Count != 0) Console.Write("{0} DISPLAYED", someJobs.Count);
+            if (someJobs.Count != 0) 
+            {
+                Console.WriteLine();
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("{0} DISPLAYED", someJobs.Count);
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("NO RESULTS");
+            }
+
             Console.WriteLine();
             Console.ResetColor();
         }
