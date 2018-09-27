@@ -27,7 +27,6 @@ namespace TechJobsConsole
             // Allow user to search/list until they manually quit with ctrl+c
             while (true)
             {
-
                 string actionChoice = GetUserSelection("View Jobs", actionChoices);
 
                 if (actionChoice.Equals("list"))
@@ -44,11 +43,12 @@ namespace TechJobsConsole
                         
                         int count = 0;
                         
-                        Console.BackgroundColor = ConsoleColor.Blue;
+                        Console.BackgroundColor = ConsoleColor.DarkBlue;
                         Console.WriteLine("\n*** All " + columnChoices[columnChoice] + " Values ***");
                         Console.WriteLine();
                         Console.BackgroundColor = ConsoleColor.White;
                         Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        results.Sort();
                         
                         foreach (string item in results)
                         {
@@ -101,11 +101,13 @@ namespace TechJobsConsole
                     if (columnChoice.Equals("all"))
                     {
                         searchResults = JobData.FindByValue(searchTerm);
+                        //searchResults.Sort();
                         PrintJobs(searchResults);
                     }
                     else
                     {
                         searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm);
+                        //searchResults.Sort();
                         PrintJobs(searchResults);
                     }
                 }
@@ -156,23 +158,13 @@ namespace TechJobsConsole
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
             Console.WriteLine(
                 "{0,-45}{1,-45}{2,-45}{3,-45}{4,-45}",
-                "POSITION","COMPANY","LOCATION","DESCRIPTION","SKILLS"
+                "POSITION","EMPLOYER","LOCATION","DESCRIPTION","COMPENTENCIES"
             );
-
-            /*Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(
-                "{0,-45}{1,-45}{2,-45}{3,-45}{4,-45}", 
-                "=========================================",
-                "=========================================",
-                "=========================================",
-                "=========================================",
-                "========================================="
-            );*/
 
             Console.WriteLine();
 
@@ -181,7 +173,7 @@ namespace TechJobsConsole
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             
             foreach (Dictionary<string, string> jobs in someJobs)
-            {   
+            {
                 foreach (KeyValuePair<string, string> job in jobs)
                 {
                     Console.Write("{0,-45}", job.Value);
