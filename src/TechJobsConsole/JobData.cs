@@ -84,7 +84,6 @@ namespace TechJobsConsole
          */
         private static void LoadData()
         {
-
             if (IsDataLoaded)
             {
                 return;
